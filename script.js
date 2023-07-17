@@ -3,6 +3,23 @@
 // in the html.
 $(function () {
 
+  // current hour is saved
+  var currentHour = dayjs().format('H');
+
+  // start of function to check if an element is past/present/future
+
+  if (id === "9") {
+      console.log("No");
+    }
+
+  $('.time-block').removeClass("past");
+  $('.time-block').removeClass("present");
+  $('.time-block').removeClass("future");
+
+  // TODO: Add code to display the current date in the header of the page.
+  var currentTime = dayjs().format('dddd, MMM D');
+  $('#display-4').text(currentTime);
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -19,11 +36,5 @@ $(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-  var currentTime = dayjs().format('dddd, MMM D');
-  $('#display-4').text(currentTime);
-
-
 
 });
