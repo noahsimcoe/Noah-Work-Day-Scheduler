@@ -4,17 +4,28 @@
 $(function () {
 
   // current hour is saved
-  var currentHour = dayjs().format('H');
+  var currentHourString = dayjs().format('H');
+  var currentHour = Number(currentHourString);
 
-  // start of function to check if an element is past/present/future
-
-  if (id === "9") {
-      console.log("No");
+  // removes/adds class to hour block if it's in past/present/future
+  var timeBlocks = document.getElementsByClassName("time-block");
+  for (var i = 0; i < timeBlocks.length; i++) {
+    var hourValueString = timeBlocks[i].getAttribute("data-value");
+    var hourValue = parseInt(hourValueString, 10);
+    if (currentHour > hourValue) {
+      timeBlocks[i].classList.remove("present");
+      timeBlocks[i].classList.remove("future");
+      timeBlocks[i].classList.add("past");
+    } else if (currentHour < hourValue) {
+      timeBlocks[i].classList.remove("past");
+      timeBlocks[i].classList.remove("present");
+      timeBlocks[i].classList.add("future");
+    } else {
+      timeBlocks[i].classList.remove("past");
+      timeBlocks[i].classList.remove("future");
+      timeBlocks[i].classList.add("present");
     }
-
-  $('.time-block').removeClass("past");
-  $('.time-block').removeClass("present");
-  $('.time-block').removeClass("future");
+  }
 
   // TODO: Add code to display the current date in the header of the page.
   var currentTime = dayjs().format('dddd, MMM D');
