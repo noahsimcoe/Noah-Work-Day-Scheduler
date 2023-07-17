@@ -9,18 +9,11 @@ $(function () {
     var hourValue = Number($(this).attr("id"));
 
     if (currentHour > hourValue) {
-      // this is refering to the current .time-block div that it's looped on
-      $(this).removeClass("present");
-      $(this).removeClass("future");
-      $(this).addClass("past");
+      $(this).removeClass("present future").addClass("past");
     } else if (currentHour < hourValue) {
-      $(this).removeClass("past");
-      $(this).removeClass("present");
-      $(this).addClass("future");
+      $(this).removeClass("past present").addClass("future");
     } else {
-      $(this).removeClass("past");
-      $(this).removeClass("future");
-      $(this).addClass("present");
+      $(this).removeClass("past future").addClass("present");
     }
   });
 
@@ -50,4 +43,5 @@ $(function () {
   $("#14 .description").val(localStorage.getItem("14"));;
   $("#15 .description").val(localStorage.getItem("15"));;
   $("#16 .description").val(localStorage.getItem("16"));;
+
 });
