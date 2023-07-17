@@ -1,17 +1,10 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
 $(function () {
-
   // current hour is saved
-  var currentHourString = dayjs().format('H');
-  var currentHour = Number(currentHourString);
-
+  var currentHour = Number(dayjs().format('H'));
   // removes/adds class to hour block if it's in past/present/future
   var timeBlocks = document.getElementsByClassName("time-block");
   for (var i = 0; i < timeBlocks.length; i++) {
-    var hourValueString = timeBlocks[i].getAttribute("data-value");
-    var hourValue = parseInt(hourValueString, 10);
+    var hourValue = parseInt(timeBlocks[i].getAttribute("data-value"), 10);
     if (currentHour > hourValue) {
       timeBlocks[i].classList.remove("present");
       timeBlocks[i].classList.remove("future");
@@ -26,26 +19,31 @@ $(function () {
       timeBlocks[i].classList.add("present");
     }
   }
-
   // TODO: Add code to display the current date in the header of the page.
   var currentTime = dayjs().format('dddd, MMM D');
   $('#display-4').text(currentTime);
 
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
+  // all elements with the "saveBtn" class are selected and will react to this onclick function
+  $(".saveBtn").on("click", saveToLocalStorage);
+
+  // called when the save button is clicked
+  function saveToLocalStorage() {
+    // finds the save button's parents's id
+    var blockId = $(this).parent().attr("id");
+    // finds the save button's sibling's (.description) value (this user inputted area)
+    var blockDescription = $(this).siblings(".description").val();
+    // saves description according to the id of it's container
+    localStorage.setItem(blockId, blockDescription);
+  }
+
+  // sets value of each description box to the value of the items of these id's
+  $("#9 .description").val(localStorage.getItem("9"));;
+  $("#10 .description").val(localStorage.getItem("10"));;
+  $("#11 .description").val(localStorage.getItem("11"));;
+  $("#12 .description").val(localStorage.getItem("12"));;
+  $("#13 .description").val(localStorage.getItem("13"));;
+  $("#14 .description").val(localStorage.getItem("14"));;
+  $("#15 .description").val(localStorage.getItem("15"));;
+  $("#16 .description").val(localStorage.getItem("16"));;
 
 });
