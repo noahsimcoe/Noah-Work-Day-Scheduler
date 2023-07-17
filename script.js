@@ -24,7 +24,6 @@ $(function () {
   // all elements with the "saveBtn" class are selected and will react to this onclick function
   $(".saveBtn").on("click", saveToLocalStorage);
 
-  // called when the save button is clicked
   function saveToLocalStorage() {
     // finds the save button's parents's id
     var blockId = $(this).parent().attr("id");
@@ -35,13 +34,8 @@ $(function () {
   }
 
   // sets value of each description box to the value of the items of these id's
-  $("#9 .description").val(localStorage.getItem("9"));;
-  $("#10 .description").val(localStorage.getItem("10"));;
-  $("#11 .description").val(localStorage.getItem("11"));;
-  $("#12 .description").val(localStorage.getItem("12"));;
-  $("#13 .description").val(localStorage.getItem("13"));;
-  $("#14 .description").val(localStorage.getItem("14"));;
-  $("#15 .description").val(localStorage.getItem("15"));;
-  $("#16 .description").val(localStorage.getItem("16"));;
-
+  for (var i = 9; i <= 16; i++) {
+    // this is a "template literal" that is injecting a variable into a string (string representation, turning it into a string)
+    $(`#${i} .description`).val(localStorage.getItem(`${i}`))
+  }
 });
