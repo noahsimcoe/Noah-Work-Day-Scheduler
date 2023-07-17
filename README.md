@@ -14,6 +14,7 @@ This project is used to create an organized schedule of someone's workday (9AM -
 
 ## Deployed Application
 Here is the link to access the deployed application. 
+https://noahsimcoe.github.io/Noah-Work-Day-Scheduler/
 
 Additionally, here is a screenshot of what it looks like.
 <img width="968" alt="Workday Scheduler Applicaiton" src="https://github.com/noahsimcoe/Noah-Work-Day-Scheduler/assets/109931528/1747f2e4-7eba-4141-9114-2058af5e1ed9">
